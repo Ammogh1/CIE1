@@ -1,0 +1,28 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Simple Python Run
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  run-code:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.10"
+
+    - name: Install libraries
+      run: |
+        pip install numpy pandas matplotlib scikit-learn
+    - name: Build
+      run: |
+        python RandomForest.py
